@@ -4,6 +4,7 @@ const app = express();
 const studentRoutes = require('./Routes/studentRoutes');
 const Error = require('./Error/error')
 const connection = require('./Connection/connection')
+
 const connectionObj = new connection();
 const errorObj = new Error()
 

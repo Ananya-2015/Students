@@ -2,11 +2,11 @@ const studentService =  require('../Services/studentServices');
 const studentServiceObj = new studentService();
 
 class studentController{
-    constructor() {};
+    constructor() {}
 
     postStudent = async(req, res, next) => {
         try{
-            // console.log(req.body.name)
+            
             const student = await studentServiceObj.postStudent(req.body.name, req.body.email);
             res.send({
                 message : "Added a student successfully",
@@ -43,7 +43,7 @@ class studentController{
         }
         catch(err){
             next(err)
-        }
+        };
     };
 
 }
