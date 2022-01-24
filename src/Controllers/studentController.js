@@ -6,11 +6,9 @@ class studentController{
 
     postStudent = async(req, res, next) => {
         try{
-            
-            const student = await studentServiceObj.postStudent(req.body.name, req.body.email);
+            await studentServiceObj.postStudent(req.body.name, req.body.email);
             res.send({
-                message : "Added a student successfully",
-                body : student
+                message : "Added a student successfully"
             })
         }
         catch(err){
@@ -20,25 +18,19 @@ class studentController{
         
     };
     getStudents = async(req, res,next) => {
-        try{
-            const students = await studentServiceObj.getStudents()
-            res.send({
-                message:"Fetching all users",
-                body : students
-            })
-        }
-        catch(err){
-            next(err)
-        }
+        res.send({
+            message:"Fetching all users",
+            body : res.results
+        })
 
     };
     updateStudent = async(req, res, next) => {
         try{
             
-            const student = await studentServiceObj.updateStudent(req.params.id, req.body)
+            await studentServiceObj.updateStudent(req.params.id, req.body)
             res.send({
-                message : "Updated one user successfully!",
-                body:student
+                message : "Updated one user successfully!"
+                
             })
         }
         catch(err){

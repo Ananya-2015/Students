@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const studentController = require('../Controllers/studentController');
+const paginatorMiddleware = require('../Middlewares/paginator');
+
 
 const studentControllerObj = new studentController();
+const paginatorMiddlewareObj = new paginatorMiddleware();
 
-router.post('/poststudent', studentControllerObj.postStudent);
-router.get('/getstudents', studentControllerObj.getStudents);
-router.put('/updatestudent/:id', studentControllerObj.updateStudent);
+router.post('/', studentControllerObj.postStudent);
+router.get('/', paginatorMiddlewareObj.pagination, studentControllerObj.getStudents);
+router.put('/:id', studentControllerObj.updateStudent);
 
 module.exports = router;
